@@ -43,6 +43,7 @@ struct flags
 
 /*Our Current Main Functions*/
 int main(int argc, char **argv, char **envp);
+int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av);
 
 /*Working with standard library functions*/
 
