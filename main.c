@@ -8,10 +8,8 @@
  * 
 */
 
-int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av)
+int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char **env)
 {
-    char buffer[BUFSIZE];
-    char tokens[TOK_BUFSIZE];
     int status = 0;
 
     if (isatty(STDIN_FILENO))
@@ -19,15 +17,13 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av)
         while (1)
         {
             prompt();
-            shell_loop(buffer, tokens);
+            shell_loop(status, env);
         }
     }
     else
     {
-        shell_loop(buffer, tokens);
+        shell_loop(status, env);
     }
-
-    free_tokens();
 
     return (status);
 }

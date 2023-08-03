@@ -7,25 +7,27 @@
  * 
 */
 
-int shell_loop(buffer, status)
+int shell_loop(status, env)
 {
+    char buffer[BUFSIZE];
+    char **tokens;
     ssize_t bytes_read;
 
-    bytes_read = getline(buffer);
+    bytes_read = get_input(buffer);
+
     if (bytes_read == -1)
     {
-        perror("getline");
-        exit(0);
+        perror("could not read input");
+        exit(EXIT_FAILURE);
     }
 
-    /* remove new line character */
+    buffer[bytes_read - 1] = '\0'; /* Remove the newline character */
 
-    parse_line(buffer);
+    tokens = parse_line(buffer);
+        
+    execute_command(tokens, env);
 
-    execute_command(buffer);
-
-    free_tokens();
+    free_tokens(tokens);
 
     return (status);
-
 }
