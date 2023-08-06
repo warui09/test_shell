@@ -17,7 +17,7 @@
 
 /* prototypes */
 void prompt();
-void free_args(char **c);
+ssize_t get_input(char *buffer, size_t size);
 void trim_whitespace(char *buffer);
 
 #endif /* MAIN_H */

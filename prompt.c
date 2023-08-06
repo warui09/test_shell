@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * propmt - prints a prompt
+ * propmt - print a prompt
  * 
  * Return: nothing
  * 

@@ -1,34 +1,28 @@
 #include "main.h"
 
 /**
- * shell_loop - main shell loop responsible for reading input, parsing it and executing it
- * @env: environment
- * 
+ * shell_loop - shell loop responsible for getting input, parsing and
+ *              executing commands
  * Return: exit status
  * 
 */
 
-int shell_loop(status, env)
+int shell_loop()
 {
-    char buffer[BUFSIZE];
-    char **tokens;
-    ssize_t bytes_read;
+    char *buffer = NULL;
+    size_t size = BUFSIZE;
 
-    bytes_read = get_input(buffer);
-
+    ssize_t bytes_read = get_input(&buffer, &size);
     if (bytes_read == -1)
     {
-        perror("could not read input");
+        perror("getline");
+        free(buffer);
         exit(EXIT_FAILURE);
     }
 
-    buffer[bytes_read - 1] = '\0'; /* Remove the newline character */
+    buffer[bytes_read - 1] = '\0'; /* remove newline character */
 
-    tokens = parse_line(buffer);
-        
-    execute_command(tokens, env);
+    trim_whitespace(buffer);
 
-    free_tokens(tokens);
-
-    return (status);
+    printf("%s\n", buffer);
 }
