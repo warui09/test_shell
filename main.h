@@ -17,5 +17,6 @@
 
 /* prototypes */
 void prompt();
+void free_args(char **c);
 
 #endif /* MAIN_H */
