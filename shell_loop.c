@@ -7,12 +7,19 @@
  * 
 */
 
-int shell_loop()
+int shell_loop(int status, char **env)
 {
     char *buffer = NULL;
     size_t size = BUFSIZE;
+    ssize_t bytes_read;
 
-    ssize_t bytes_read = get_input(&buffer, &size);
+    if (!env)
+    {
+        perror("env");
+        exit(EXIT_FAILURE);
+    }
+
+    bytes_read = get_input(buffer, size);
     if (bytes_read == -1)
     {
         perror("getline");
@@ -25,4 +32,6 @@ int shell_loop()
     trim_whitespace(buffer);
 
     printf("%s\n", buffer);
+
+    return (status);
 }
