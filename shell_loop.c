@@ -7,18 +7,18 @@
  * 
 */
 
-int shell_loop(int status, char **env)
+int shell_loop(int status,__attribute__((unused)) char **env)
 {
     char *buffer = NULL;
     size_t size = BUFSIZE;
     ssize_t bytes_read;
 
-    if (!env)
+    buffer = malloc(size);
+    if (!buffer)
     {
-        perror("env");
+        perror("malloc");
         exit(EXIT_FAILURE);
     }
-
     bytes_read = get_input(buffer, size);
     if (bytes_read == -1)
     {
