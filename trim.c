@@ -1,5 +1,24 @@
 #include "main.h"
 
+/**
+ * is_whitespace - check if a character is whitespace
+ * @c: character to check
+ * 
+ * Return: 1 if character is whitespace, 0 otherwise
+ * 
+*/
+
+int is_whitespace(char c)
+{
+    return (c == ' ' || c == '\t');
+}
+
+/**
+ * trim_whitespace - remove starting and trailing white spaces from the input string
+ * 
+ * Return: nothing
+*/
+
 void trim_whitespace(char *buffer)
 {
     char *end;
