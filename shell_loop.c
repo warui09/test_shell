@@ -31,7 +31,17 @@ int shell_loop(int status,__attribute__((unused)) char **env)
 
     trim_whitespace(buffer);
 
-    printf("%s\n", buffer);
+    if (strcmp(buffer, "exit") == 0)
+    {
+        free(buffer);
+        exit(status);
+    }
+    else
+    {
+        printf("%s\n", buffer);
+    }
+
+    free(buffer);
 
     return (status);
 }

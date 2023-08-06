@@ -20,5 +20,6 @@ void prompt();
 ssize_t get_input(char *buffer, size_t size);
 void trim_whitespace(char *buffer);
 int shell_loop(int status, char **env);
+void free_memory(char *buffer);
 
 #endif /* MAIN_H */
