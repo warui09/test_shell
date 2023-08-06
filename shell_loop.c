@@ -2,6 +2,7 @@
 
 /**
  * shell_loop - main shell loop responsible for reading input, parsing it and executing it
+ * @env: environment
  * 
  * Return: exit status
  * 
