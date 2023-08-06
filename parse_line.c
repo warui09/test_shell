@@ -20,6 +20,8 @@ char **parse_line(char *buffer)
         exit(EXIT_FAILURE);
     }
 
+    trim_whitespace(buffer);
+
     token = strtok(buffer, TOK_DELIM);
 
     while (token && token_idx < TOK_BUFSIZE - 1)

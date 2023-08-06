@@ -18,5 +18,6 @@
 /* prototypes */
 void prompt();
 void free_args(char **c);
+void trim_whitespace(char *buffer);
 
 #endif /* MAIN_H */
