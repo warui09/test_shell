@@ -7,9 +7,9 @@
  * 
 */
 
-int shell_loop(status, env)
+int shell_loop(int status, char **env)
 {
-    char buffer[BUFSIZE];
+    char buffer[BUFSIZE]; /*Declaration of char array named buffer*/
     char **tokens;
     ssize_t bytes_read;
 
