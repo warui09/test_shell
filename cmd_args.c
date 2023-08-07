@@ -5,27 +5,26 @@
 #include "shell.h"
 
 /* main - Handling command arguments
- * argc - Argument count
- * **argv - Pointer to the argument vector
+ * argc - Holds number of command line arguments
+ * **argv - Pointer to array of pointers
  * Return Value: On success (0)
  *               Else on error (1)
 */
 
-int main(int argc, char **argv[]){
-    int i = 0;
-    do {
-        printf("%s ", argv[1]);
-        i++;
-    } while (argv[1]);
-    printf("\n");
-    return(0);
+int main(int argc, char **argv) {
+	for (int i = 1; i < argc; i++) {
+		printf("%s ", argv[i]);
+	}
+	printf("\n");
+	return 0;
 }
 
 /*Command to free arguments*/
 /*
- * free_args - frees an array 
+ * free_args - Takes pointer to the array of pointers as its parameter
  * @c : The array which is pointed to
- * 
+ * It will iterate through through the array of pointers until it
+ * 		encounters a NULL pointer indicating the end of an array
  * Return : void
 */
 void free_args(char **c)
