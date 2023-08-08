@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <signal.h>
 
 /* macros */
 #define BUFSIZE 1024
@@ -19,7 +20,8 @@
 void prompt();
 ssize_t get_input(char *buffer, size_t size);
 void trim_whitespace(char *buffer);
-int shell_loop(int status, char **env);
 void free_memory(char *buffer);
+void handle_sigint(int sig);
+int shell_loop(int status, char **env);
 
 #endif /* MAIN_H */

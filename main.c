@@ -8,9 +8,11 @@
  * 
 */
 
-int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char **env)
+int main(__attribute__((unused)) int ac,__attribute__((unused)) char **av, char **env)
 {
     int status = 0;
+
+    signal(SIGINT, handle_sigint);
 
     if (isatty(STDIN_FILENO))
     {
